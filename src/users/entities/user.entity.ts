@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ApiKey } from '../api-keys/entities/api-key.entity/api-key.entity';
 
 @Entity()
 export class User {
@@ -10,4 +18,14 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column()
+  role: string;
+
+  @Column('simple-array')
+  permissions: string[];
+
+  @JoinTable()
+  @OneToMany((_type) => ApiKey, (apiKey) => apiKey.user)
+  apiKeys: ApiKey[];
 }

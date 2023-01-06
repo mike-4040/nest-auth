@@ -6,3 +6,8 @@ export interface ActiveUserData {
   aud: string;
   iss: string;
 }
+
+export interface GeneratedApiKeyPayload {
+  apiKey: string;
+  hashKey: string;
+}

@@ -45,8 +45,8 @@ export class AccessTokenGuard implements CanActivate {
     if (!authorizationHeader) {
       return null;
     }
-    const [bearer, token] = authorizationHeader.split(' ');
-    if (bearer !== 'Bearer' || !token) {
+    const [type, token] = authorizationHeader.split(' ');
+    if (type !== 'Bearer' || !token) {
       return null;
     }
     return token;
